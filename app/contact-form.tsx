@@ -36,6 +36,25 @@ export function ContactForm() {
     setState("error");
   }
 
+  if (state === "success") {
+    return (
+      <div className="contact-form contact-success" aria-live="polite">
+        <div className="success-orbit" aria-hidden="true">
+          <span />
+        </div>
+        <p className="success-kicker">Заявка отправлена</p>
+        <h3>Спасибо, скоро свяжемся</h3>
+        <p>
+          Я получила ваше сообщение и отвечу в ближайшее время в указанном
+          способе связи.
+        </p>
+        <button type="button" onClick={() => setState("idle")}>
+          Отправить еще одну заявку
+        </button>
+      </div>
+    );
+  }
+
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <label>
@@ -58,7 +77,6 @@ export function ContactForm() {
         {state === "loading" ? "Отправляю..." : "Отправить заявку"}
       </button>
       <p className="form-status" aria-live="polite">
-        {state === "success" && "Спасибо, скоро свяжусь."}
         {state === "error" &&
           "Не получилось отправить заявку. Попробуйте еще раз или напишите в Telegram."}
       </p>
