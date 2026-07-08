@@ -136,18 +136,10 @@ export default function Home() {
 
           <nav className="footer-links" aria-label="Навигация в футере">
             <div>
-              <h3>Занятия</h3>
-              <a href="#services">Растяжка</a>
-              <a href="#services">Балет</a>
-              <a href="#services">Пилатес</a>
-              <a href="#request">Записаться</a>
-            </div>
-            <div>
               <h3>Студия</h3>
               <a href="#about">Обо мне</a>
               <a href="#process">Этапы работы</a>
               <a href="#request">Форма заявки</a>
-              <a href="mailto:hello@katevrai.ru">Почта</a>
             </div>
             <div>
               <h3>Контакты</h3>
