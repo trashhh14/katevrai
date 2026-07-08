@@ -43,8 +43,8 @@ export default function Home() {
             </h1>
             <div className="hero-meta">
               <p className="hero-lead">
-                Индивидуальные и групповые занятия для взрослых в мягком,
-                эстетичном и бережном формате.
+                Тренировки с индивидуальным подходом и реальным результатом с
+                заботой о своем теле.
               </p>
               <a className="primary-link" href="#request">
                 Записаться
