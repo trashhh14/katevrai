@@ -1,65 +1,174 @@
-import Image from "next/image";
+import { ContactForm } from "@/app/contact-form";
+import { ServiceCards } from "@/app/service-cards";
+
+const steps = [
+  "Заявка",
+  "Обсуждение цели",
+  "Подбор формата занятия",
+  "Первое занятие",
+  "Регулярная работа и прогресс",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <section className="hero-section" id="top">
+        <div className="hero-video-panel" aria-hidden="true">
+          <video
+            className="hero-video"
+            src="/magnific-loop-panel.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="hero-shell">
+          <header className="hero-nav" aria-label="Навигация по сайту">
+            <a className="hero-logo" href="#top">
+              KATE<span>VRAI</span>
+            </a>
+            <nav>
+              <a href="#about">Обо мне</a>
+              <a href="#services">Услуги</a>
+              <a href="#request">Контакт</a>
+            </nav>
+          </header>
+
+          <div className="hero-copy reveal">
+            <p className="eyebrow">Растяжка • балет • пилатес</p>
+            <h1 className="hero-title-logo">
+              <span>Kate</span>
+              <em>Vrai</em>
+            </h1>
+            <div className="hero-meta">
+              <p className="hero-lead">
+                Индивидуальные и групповые занятия для взрослых в мягком,
+                эстетичном и бережном формате.
+              </p>
+              <a className="primary-link" href="#request">
+                Записаться
+              </a>
+            </div>
+          </div>
+
+          <div />
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section about-section" id="about">
+        <div className="section-inner about-layout">
+          <div>
+            <p className="section-kicker">Обо мне</p>
+            <h2>Бережный путь к гибкости, силе и красивой линии тела</h2>
+          </div>
+          <div className="prose-block">
+            <p>
+              Я педагог по растяжке, балету и пилатесу. В занятиях соединяю
+              внимательную работу с телом, эстетику классического движения и
+              спокойную систему, в которой прогресс появляется без давления.
+            </p>
+            <p>
+              Для меня важны безопасность, индивидуальный подход и ощущение
+              удовольствия от процесса. Мы работаем с вашим уровнем подготовки,
+              целями и ритмом жизни.
+            </p>
+          </div>
+          <div className="about-gallery-space" aria-hidden="true" />
+        </div>
+      </section>
+
+      <section className="section services-section" id="services">
+        <div className="section-inner">
+          <div className="section-heading">
+            <p className="section-kicker">Услуги</p>
+            <h2>Форматы занятий</h2>
+          </div>
+          <ServiceCards />
+        </div>
+      </section>
+
+      <section className="section steps-section" id="process">
+        <div className="section-inner two-column">
+          <div>
+            <p className="section-kicker">Этапы работы</p>
+            <h2>Все начинается с короткого разговора о вашей цели</h2>
+          </div>
+          <ol className="step-list">
+            {steps.map((step, index) => (
+              <li key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section request-section" id="request">
+        <div className="section-inner form-layout">
+          <div>
+            <p className="section-kicker">Заявка</p>
+            <h2>Напишите, и я помогу выбрать удобный формат</h2>
+            <p className="form-intro">
+              Укажите имя, удобный способ связи и пару слов о том, что хочется
+              улучшить: гибкость, осанку, пластику, силу или уверенность в
+              движении.
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="footer-waves" aria-hidden="true" />
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <a className="footer-logo" href="#top">
+              <span className="footer-mark" />
+              Kate Vrai
+            </a>
+            <a className="footer-certificate" href="#request">
+              Сертификаты
+            </a>
+            <p>© 2026 Kate Vrai. Все права защищены.</p>
+          </div>
+
+          <nav className="footer-links" aria-label="Навигация в футере">
+            <div>
+              <h3>Занятия</h3>
+              <a href="#services">Растяжка</a>
+              <a href="#services">Балет</a>
+              <a href="#services">Пилатес</a>
+              <a href="#request">Записаться</a>
+            </div>
+            <div>
+              <h3>Студия</h3>
+              <a href="#about">Обо мне</a>
+              <a href="#process">Этапы работы</a>
+              <a href="#request">Форма заявки</a>
+              <a href="mailto:hello@katevrai.ru">Почта</a>
+            </div>
+            <div>
+              <h3>Контакты</h3>
+              <a href="https://t.me/" target="_blank" rel="noreferrer">
+                Telegram
+              </a>
+              <a
+                href="https://www.instagram.com/katevraii?igsh=MWc4NDRmN3BpMDVncA%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+              <a href="mailto:hello@katevrai.ru">hello@katevrai.ru</a>
+            </div>
+          </nav>
+        </div>
+        <p className="footer-giant" aria-hidden="true">
+          Kate Vrai
+        </p>
+      </footer>
+    </main>
   );
 }
